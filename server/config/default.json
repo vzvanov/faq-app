@@ -1,6 +1,6 @@
 {
   "port": 5000,
-  "db": "mongodb+srv://root:root@cluster0.npafb.mongodb.net/node-faq?retryWrites=true&w=majority",
+  "db": "string to connect to MongoDB",
   "api_url": "http://localhost:5000",
   "client_url": "http://localhost:3000"
 }
