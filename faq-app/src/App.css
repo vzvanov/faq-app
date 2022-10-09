@@ -212,6 +212,7 @@ footer {
 
 .list_row-left {
   margin-right: 1.5rem;
+  transition: 0.5s;
 }
 
 .list_row-left:hover {

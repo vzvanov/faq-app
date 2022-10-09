@@ -19,7 +19,7 @@ app.use('/api', require('./router/index'));
 
 const start = async () => {
   try {
-    await mongoose.connect(String(process.env.DB_URL), {
+    await mongoose.connect(process.env.DB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
