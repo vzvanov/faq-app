@@ -4,6 +4,7 @@
 
 ![Home](/img/img01.jpg "Home")
 ![Admin](/img/img02.jpg "Admin")
+![Edit](/img/img03.jpg "Edit")
 
 ## To start
 

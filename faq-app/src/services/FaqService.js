@@ -22,12 +22,10 @@ export default class FaqService {
       });
   }
 
-  static postFaq(summary, info, setId, setCreate) {
+  static postFaq(summary, info) {
     $api
       .post('/faqs', { summary, info })
       .then(res => {
-        setId(res.data._id);
-        setCreate(false);
       })
       .catch(error => {
         console.log(error);
