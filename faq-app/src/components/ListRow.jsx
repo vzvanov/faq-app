@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import $api from "../axios";
+import FaqService from "../services/FaqService";
 
-const ListRow = ({ id, summary, info, create = false, onDeleteItem }) => {
+const ListRow = ({ id, summary, info, create = false, onChangeList }) => {
   const [_id, setId] = useState(id);
   const [_summary, setSummary] = useState(summary);
   const [_info, setInfo] = useState(info);
@@ -9,37 +9,16 @@ const ListRow = ({ id, summary, info, create = false, onDeleteItem }) => {
 
   const saveFaq = () => {
     if (_create) {
-      $api
-        .post('/faqs', { summary: _summary, info: _info })
-        .then(res => {
-          setId(res.data._id);
-          setCreate(false);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      FaqService.postFaq(_summary, _info, setId, setCreate);
     } else {
-      $api
-        .put('/faqs', { id: _id, summary: _summary, info: _info })
-        .then(res => {
-          //res.data contain prev. faq
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      FaqService.putFaq(_id, _summary, _info);
     }
+    onChangeList();
   }
 
   const deleteFaq = () => {
-    $api
-      .delete('/faqs', { data: { id: _id } })
-      .then(res => {
-        //res.data contain deleted faq
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    onDeleteItem();
+    FaqService.deleteFaq(_id);
+    onChangeList();
   }
 
   return (

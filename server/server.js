@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const config = require('config');
 const mongoose = require('mongoose');
@@ -18,7 +19,7 @@ app.use('/api', require('./router/index'));
 
 const start = async () => {
   try {
-    await mongoose.connect(config.get('db'), {
+    await mongoose.connect(String(process.env.DB_URL), {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
